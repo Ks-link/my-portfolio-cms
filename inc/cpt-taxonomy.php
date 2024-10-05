@@ -51,7 +51,7 @@ function portfolio_theme_register_custom_post_types() {
     register_post_type( 'portfolio-works', $args );
 
 }
-add_action( 'init', 'school_theme_register_custom_post_types' );
+add_action( 'init', 'portfolio_theme_register_custom_post_types' );
 
 
 // function portfolio_theme_register_taxonomies() {
