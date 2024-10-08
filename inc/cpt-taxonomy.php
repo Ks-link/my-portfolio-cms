@@ -44,7 +44,7 @@ function portfolio_theme_register_custom_post_types() {
         'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'      => 5,
-        'menu_icon'          => 'dashicons-businessperson',
+        'menu_icon'          => 'dashicons-smiley',
         'supports'           => array( 'title', 'editor', 'thumbnail' ),
     );
 
