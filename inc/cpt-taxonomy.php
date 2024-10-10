@@ -55,20 +55,20 @@ add_action( 'init', 'portfolio_theme_register_custom_post_types' );
 
 
 function portfolio_theme_register_taxonomies() {
-    // Add Work Category taxonomy
+    // Add Work Category (technology) taxonomy
     $labels = array(
-        'name'              => _x( 'Work Categories', 'taxonomy general name' ),
-        'singular_name'     => _x( 'Work Category', 'taxonomy singular name' ),
-        'search_items'      => __( 'Search Work Categories' ),
-        'all_items'         => __( 'All Work Category' ),
-        'parent_item'       => __( 'Parent Work Category' ),
-        'parent_item_colon' => __( 'Parent Work Category:' ),
-        'edit_item'         => __( 'Edit Work Category' ),
-        'view_item'         => __( 'View Work Category' ),
-        'update_item'       => __( 'Update Work Category' ),
-        'add_new_item'      => __( 'Add New Work Category' ),
-        'new_item_name'     => __( 'New Work Category Name' ),
-        'menu_name'         => __( 'Work Category' ),
+        'name'              => _x( 'Technology', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Technology', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Technologies' ),
+        'all_items'         => __( 'All Technologies' ),
+        'parent_item'       => __( 'Parent Technology' ),
+        'parent_item_colon' => __( 'Parent Technology:' ),
+        'edit_item'         => __( 'Edit Technology' ),
+        'view_item'         => __( 'View Technology' ),
+        'update_item'       => __( 'Update Technology' ),
+        'add_new_item'      => __( 'Add New Technology' ),
+        'new_item_name'     => __( 'New Technology Name' ),
+        'menu_name'         => __( 'Technology' ),
     );
     $args = array(
         'hierarchical'      => true,
@@ -79,9 +79,9 @@ function portfolio_theme_register_taxonomies() {
         'show_in_rest'      => true,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array( 'slug' => 'work-categories' ),
+        'rewrite'           => array( 'slug' => 'technology' ),
     );
-    register_taxonomy( 'portfolio-work-category', array( 'portfolio-work' ), $args );
+    register_taxonomy( 'portfolio-technology', array( 'portfolio-work' ), $args );
 
     }
 add_action( 'init', 'portfolio_theme_register_taxonomies');
