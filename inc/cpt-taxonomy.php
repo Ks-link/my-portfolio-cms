@@ -45,25 +45,52 @@ function portfolio_theme_register_custom_post_types() {
         'hierarchical'       => false,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-smiley',
-        'supports'           => array( 'title', 'editor', 'thumbnail' ),
+        'supports'           => array( 'title', 'thumbnail' ),
     );
 
-    register_post_type( 'portfolio-works', $args );
+    register_post_type( 'portfolio-work', $args );
 
 }
 add_action( 'init', 'portfolio_theme_register_custom_post_types' );
 
 
-// function portfolio_theme_register_taxonomies() {
+function portfolio_theme_register_taxonomies() {
+    // Add Work Category taxonomy
+    $labels = array(
+        'name'              => _x( 'Work Categories', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Work Category', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Work Categories' ),
+        'all_items'         => __( 'All Work Category' ),
+        'parent_item'       => __( 'Parent Work Category' ),
+        'parent_item_colon' => __( 'Parent Work Category:' ),
+        'edit_item'         => __( 'Edit Work Category' ),
+        'view_item'         => __( 'View Work Category' ),
+        'update_item'       => __( 'Update Work Category' ),
+        'add_new_item'      => __( 'Add New Work Category' ),
+        'new_item_name'     => __( 'New Work Category Name' ),
+        'menu_name'         => __( 'Work Category' ),
+    );
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menu'  => true,
+        'show_in_rest'      => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'work-categories' ),
+    );
+    register_taxonomy( 'portfolio-work-category', array( 'portfolio-work' ), $args );
 
-// }
-// add_action( 'init', 'portfolio_theme_register_taxonomies');
+    }
+add_action( 'init', 'portfolio_theme_register_taxonomies');
 
 
 // When user switches themes this function flushes the permalinks of this theme
 function portfolio_theme_rewrite_flush() {
     portfolio_theme_register_custom_post_types();
-    // portfolio_theme_register_taxonomies();
+    portfolio_theme_register_taxonomies();
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'portfolio_theme_rewrite_flush' );
